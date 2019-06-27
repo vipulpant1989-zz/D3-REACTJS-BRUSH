@@ -36,6 +36,7 @@ export default class BaseChart extends Component {
 
     get ruler() {
         console.warn('Override ruler method to add a ruler');
+        return null;
     }
 
     get xAxis() {
@@ -53,7 +54,7 @@ export default class BaseChart extends Component {
             return(
                 <g key={`y-axis-${d}`} transform={`translate(${margin},${this.yScale(d)})`}>
                     <text x="-30" y="5">{this.props.formatter ? this.props.formatter(d/100) : d}</text>
-                    <line className='gridline' x1='0' x1={this.calcWidth - margin} y1='0' y2='0'
+                    <line className='gridline' x1='0' x2={this.calcWidth - margin} y1='0' y2='0'
                           transform="translate(-5,0)"/>
                 </g>
             );

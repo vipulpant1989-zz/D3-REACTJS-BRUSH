@@ -37,10 +37,8 @@ export default class LineChart extends BaseChart {
         const extent = d3.event.selection.map(this.xScale.invert, this.xScale);
         const minX = Math.floor(extent[0]);
         const maxY = Math.floor(extent[1]);
-        console.log(minX, maxY);
         const { data } = this.props;
         const formattedData = data.filter((d) => d.category >= minX && d.category <= maxY );
-        console.log(formattedData);
         this.setState((prevState) => {
            if(prevState.data.length !== formattedData.length){
                return {
