@@ -1,24 +1,35 @@
 import React from 'react';
-import logo from './logo.svg';
+import LineChart from './components/Chart/LineChart';
 import './App.css';
+import data from './constants';
+import * as d3 from 'd3';
+
+const width = 500, height = 350, margin = 30;
+
+const onMouseOverHandler = (x, y, data) => {
+    console.log(this);
+};
+
+const formatter = d3.format(",.1%")	;
+
 
 function App() {
+
+    const sum = d3.sum(data, d => d.category);
+    const formatterData = data.sort((o1, o2) => o1.category - o2.category).map((o, index, self) => {
+        const { category , value } = o;
+        const proportion =  Number(((value / sum)).toFixed(2));
+        return {
+            ...o,
+            x: category,
+            y: proportion * 100,
+            proportion,
+        };
+    });
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <LineChart formatter={formatter} data={formatterData} width={width} height={height} margin={margin} onMouseOverHandler={onMouseOverHandler} />
     </div>
   );
 }

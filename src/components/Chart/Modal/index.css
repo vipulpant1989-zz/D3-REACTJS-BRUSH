@@ -1,0 +1,13 @@
+.modal {
+    stroke: black;
+    stroke-width: 0.5;
+    fill: white;
+    width: 200px;
+    height: 40px;
+}
+
+text {
+    white-space: pre-wrap;
+    font-size: 12px;
+    font-weight: bolder;
+}
