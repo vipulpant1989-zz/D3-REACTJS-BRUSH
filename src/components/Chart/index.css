@@ -44,6 +44,7 @@ path {
     stroke: black;
     fill: black;
     cursor: pointer;
+    stroke-width: 1px;
 }
 
 .selection {

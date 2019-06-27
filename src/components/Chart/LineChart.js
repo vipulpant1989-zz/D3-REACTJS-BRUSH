@@ -2,7 +2,7 @@ import React, {Fragment} from 'react';
 import BaseChart from './BaseChart';
 import * as d3 from 'd3';
 
-const symbol = d3.symbol().size([40]);
+const symbol = d3.symbol().size([25]);
 
 const Dot = ({
     x,
@@ -75,7 +75,6 @@ export default class LineChart extends BaseChart {
             let newState = {};
             if (prevState.message !== d.user) {
                 newState = {
-                    ...newState,
                     x,
                     y,
                     message: username,
